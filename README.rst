@@ -16,9 +16,9 @@ Topics in order
 
 * Special methods: the metaobject protocol in Python
 * Functions as objects
-* Function decorators
-* Rethinking the **Strategy** design pattern
+	* Function decorators
+	* Rethinking the **Strategy** design pattern
 * Properties and descriptors
 * Classes as objects
-* Metaclasses and class decorators
+	* Metaclasses and class decorators
 * Methods as descriptors

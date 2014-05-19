@@ -48,8 +48,7 @@ class Order:
         try:
             return self.__total
         except AttributeError:
-            self.__total = sum(item.quantity * item.price
-                               for item in self.cart)
+            self.__total = sum(item.total for item in self.cart)
             return self.__total
 
     def due(self):

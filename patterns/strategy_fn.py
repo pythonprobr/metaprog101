@@ -85,3 +85,5 @@ def large_order_promo(order):
     distinct_items = {item.product for item in order.cart}
     if len(distinct_items) >= 10:
         return order.total * .07
+        
+strategies = [fidelity_promo, bulk_promo, large_order_promo]

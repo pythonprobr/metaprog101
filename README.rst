@@ -2,7 +2,7 @@
 Introduction to Metaprogramming in Python
 ============================================
 
-Um curso rápido em estado *alfa*.
+Um curso rápido em estado *pré-alfa*.
 
 Pre-requisites
 =================
@@ -16,9 +16,12 @@ Topics in order
 
 * Special methods: the metaobject protocol in Python
 * Functions as objects
-	* Function decorators
-	* Rethinking the **Strategy** design pattern
-* Properties and descriptors
+    * Function decorators
+    * Rethinking the **Strategy** design pattern
+* Attributes as objects
+    * Properties
+    * Descriptors
 * Classes as objects
-	* Metaclasses and class decorators
+    * Metaclasses
+    * Class decorators
 * Methods as descriptors

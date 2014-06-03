@@ -15,6 +15,9 @@ TypeError: 'x' is not the same type as 3 (int)
 Traceback (most recent call last):
   ...
 TypeError: '[11]' is not the same type as 3 (int)
-
+>>> len(l)
+5
+>>> l
+MonoList([3, 0, 1, 2, 3])
 
 """

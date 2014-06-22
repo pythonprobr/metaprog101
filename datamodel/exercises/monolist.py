@@ -15,6 +15,10 @@ Operações básicas:
     5
     >>> l
     MonoList([3, 0, 1, 2, 3])
+    >>> l2 = MonoList('ABC')
+    >>> l2
+    MonoList(['A', 'B', 'C'])
+
 
 
 Verificação de tipos:
@@ -29,6 +33,11 @@ Verificação de tipos:
     TypeError: [11] (list) is not the same type as 3 (int)
     >>> len(l)
     5
+    >>> MonoList(['A', 0])
+    Traceback (most recent call last):
+      ...
+    TypeError: 0 (int) is not the same type as 'A' (str)
+
 
 
 """
@@ -38,20 +47,24 @@ import UserList
 
 class MonoList(UserList.UserList):
 
+    def __init__(self, data=None):
+        super(MonoList, self).__init__()
+        if data:
+            self._item_type = type(data[0])
+
     def append(self, item):
-        if self.data:
-            self._check_type(item)
+        self._check_type(item)
         self.data.append(item)
 
     def __repr__(self):
         return '%s(%r)' % (type(self).__name__, self.data)
 
-
     def _check_type(self, item):
-        first = self.data[0]
-        if type(first) is not type(item):
-            msg = '%r (%s) is not the same type as %r (%s)'
-            raise TypeError(msg % (item, type(item).__name__,
+        if self.data:
+            first = self.data[0]
+            if type(first) is not type(item):
+                msg = '%r (%s) is not the same type as %r (%s)'
+                raise TypeError(msg % (item, type(item).__name__,
                                    first, type(first).__name__))
 
 

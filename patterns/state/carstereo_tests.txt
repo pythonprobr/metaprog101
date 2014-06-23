@@ -1,0 +1,30 @@
+======================================
+CarStero: State design pattern example
+======================================
+
+  >>> from carstereo_classic import Receiver
+  >>> rcv = Receiver()
+  >>> rcv
+  <Receiver source: FM 89.1 (play)>
+  >>> rcv.skip()
+  >>> rcv
+  <Receiver source: FM 90.5 (play)>
+  >>> rcv.pause()
+  >>> rcv
+  <Receiver source: FM 90.5 (mute)>
+  >>> rcv.change_source()
+  >>> rcv
+  <Receiver source: AM 620 (play)>
+  >>> rcv.change_source()
+  >>> rcv
+  <Receiver source: CD track #1:"And I Love Her" (play)>
+  >>> rcv.skip()
+  >>> rcv
+  <Receiver source: CD track #2:"Any Time at All" (play)>
+  >>> rcv.pause()
+  >>> rcv
+  <Receiver source: CD track #2:"Any Time at All" (pause)>
+  >>> rcv.play()
+  >>> rcv
+  <Receiver source: CD track #2:"Any Time at All" (play)>
+    

@@ -44,19 +44,20 @@ class Receiver:
 
     def change_source(self):
         if isinstance(self.source, FMRadioSource):
-            self.source = AMRadioSource()
-        elif isinstance(self.source, AMRadioSource):
             self.source = CDSource()
         else:
             self.source = FMRadioSource()
 
     def skip(self):
+        """Skip to next station or track"""
         self.source.skip()
 
     def pause(self):
+        """Mute radio or pause playback"""
         self.source.pause()
 
     def play(self):
+        """Unmute radio or start/resume playback"""
         self.source.play()
 
     def __repr__(self):
@@ -64,10 +65,6 @@ class Receiver:
 
 
 class Source(metaclass=abc.ABCMeta):
-
-    def __init__(self, receiver):
-        self.receiver = receiver
-        self.mode = 'play'
 
     @abc.abstractmethod
     def skip(self):
@@ -82,8 +79,9 @@ class Source(metaclass=abc.ABCMeta):
         """Unmute radio or start/resume playback"""
 
 
-class RadioSource(Source):
-    """Generic radio source"""
+class FMRadioSource(Source):
+    band = 'FM'
+    stations = [89.1, 90.5, 96.9, 100.9, 103.3]
 
     def __init__(self):
         self.scanner = itertools.cycle(self.stations)
@@ -91,27 +89,18 @@ class RadioSource(Source):
         self.play()
 
     def __str__(self):
-        fmt = '{} {} ({})'
-        return fmt.format(self.band, self.playing, self.mode)
+        fmt = '{} {}{}'
+        mode = ' (mute)' if self.mode == 'mute' else ''
+        return fmt.format(self.band, self.tuned, mode)
 
     def skip(self):
-        self.playing = next(self.scanner)
+        self.tuned = next(self.scanner)
 
     def pause(self):
         self.mode = 'mute'
 
     def play(self):
         self.mode = 'play'
-
-
-class FMRadioSource(RadioSource):
-    band = 'FM'
-    stations = [89.1, 90.5, 96.9, 100.9, 103.3]
-
-
-class AMRadioSource(RadioSource):
-    band = 'AM'
-    stations = [620, 780, 840, 1040, 1200]
 
 
 class CDSource(Source):
@@ -125,13 +114,13 @@ class CDSource(Source):
 
     def __str__(self):
         fmt = 'CD track #{0[0]}:"{0[1]}" ({1})'
-        return fmt.format(self.playing, self.mode)
+        return fmt.format(self.track, self.mode)
 
     def skip(self):
-        self.playing = next(self.player)
+        self.track = next(self.player)
 
     def pause(self):
-        self.mode = 'pause'
+        self.mode = 'paused'
 
     def play(self):
-        self.mode = 'play'
+        self.mode = 'playing'

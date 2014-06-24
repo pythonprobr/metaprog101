@@ -1,0 +1,11 @@
+Jovem Pan	620
+CBN	780
+Rádio Bandeirantes	840
+Rádio Capital	1040
+Cultura Brasil	1200
+
+89 a Rádio Rock	89.1
+CBN	90.5
+BandNews FM	96.9
+Jovem Pan FM	100.9
+Cultura FM	103.3

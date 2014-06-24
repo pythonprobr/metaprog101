@@ -1,23 +1,5 @@
-
 """
-    >>> joe = Customer('John Doe', 0)
-    >>> ann = Customer('Ann Smith', 1100)
-    >>> cart = [LineItem('banana', 3, .5),
-    ...         LineItem('apple', 10, 1.5),
-    ...         LineItem('watermellon', 5, 5.0)]
-    >>> Order(joe, cart, 'fidelity')
-    <Order total: 41.50 due: 41.50>
-    >>> Order(ann, cart, 'fidelity')
-    <Order total: 41.50 due: 39.42>
-    >>> banana_cart = [LineItem('banana', 30, .5),
-    ...                LineItem('apple', 10, 1.5)]
-    >>> Order(joe, banana_cart, 'bulk')
-    <Order total: 30.00 due: 28.50>
-    >>> long_order = [LineItem(str(code), 1, 1.0) for code in range(10)]
-    >>> Order(joe, long_order, 'large_order')
-    <Order total: 10.00 due: 9.30>
-
-
+Classic implementation of the Strategy pattern
 """
 
 from abc import ABCMeta, abstractmethod
